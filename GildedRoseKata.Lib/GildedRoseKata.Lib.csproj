@@ -41,7 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="GildedRose.cs" />
-    <Compile Include="GildedRoseProducts.cs" />
+    <Compile Include="ProductNames.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -134,7 +134,7 @@ namespace GildedRoseKata.Tests
         [Test()]
         public void Backstage_IncreaseQuality_Step1()
         {
-            var item = new Item { Name = GildedRoseProducts.BackstagePasses, SellIn = SELLIN_STEP1, Quality = POSITIVE_QUALITY };
+            var item = new Item { Name = ProductNames.BackstagePasses, SellIn = SELLIN_STEP1, Quality = POSITIVE_QUALITY };
 
             IList<Item> Items = new List<Item> { item };
             GildedRose app = new GildedRose(Items);
@@ -147,7 +147,7 @@ namespace GildedRoseKata.Tests
         [Test()]
         public void Backstage_IncreaseQuality_Step2()
         {
-            var item = new Item { Name = GildedRoseProducts.BackstagePasses, SellIn = SELLIN_STEP2, Quality = POSITIVE_QUALITY };
+            var item = new Item { Name = ProductNames.BackstagePasses, SellIn = SELLIN_STEP2, Quality = POSITIVE_QUALITY };
 
             IList<Item> Items = new List<Item> { item };
             GildedRose app = new GildedRose(Items);
@@ -160,7 +160,7 @@ namespace GildedRoseKata.Tests
         [Test()]
         public void Backstage_IncreaseQuality_Expired()
         {
-            var item = new Item { Name = GildedRoseProducts.BackstagePasses, SellIn = 0, Quality = POSITIVE_QUALITY };
+            var item = new Item { Name = ProductNames.BackstagePasses, SellIn = 0, Quality = POSITIVE_QUALITY };
 
             IList<Item> Items = new List<Item> { item };
             GildedRose app = new GildedRose(Items);

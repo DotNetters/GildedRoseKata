@@ -18,11 +18,11 @@ namespace GildedRoseKata.Lib
         {
             for (var i = 0; i < Items.Count; i++)
             {
-                if (Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
+                if (Items[i].Name != ProductNames.AgedBrie && Items[i].Name != ProductNames.BackstagePasses)
                 {
                     if (Items[i].Quality > 0)
                     {
-                        if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
+                        if (Items[i].Name != ProductNames.Sulfuras)
                         {
                             Items[i].Quality = Items[i].Quality - 1;
                         }
@@ -34,7 +34,7 @@ namespace GildedRoseKata.Lib
                     {
                         Items[i].Quality = Items[i].Quality + 1;
 
-                        if (Items[i].Name == "Backstage passes to a TAFKAL80ETC concert")
+                        if (Items[i].Name == ProductNames.BackstagePasses)
                         {
                             if (Items[i].SellIn < 11)
                             {
@@ -55,20 +55,20 @@ namespace GildedRoseKata.Lib
                     }
                 }
 
-                if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
+                if (Items[i].Name != ProductNames.Sulfuras)
                 {
                     Items[i].SellIn = Items[i].SellIn - 1;
                 }
 
                 if (Items[i].SellIn < 0)
                 {
-                    if (Items[i].Name != "Aged Brie")
+                    if (Items[i].Name != ProductNames.AgedBrie)
                     {
-                        if (Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
+                        if (Items[i].Name != ProductNames.BackstagePasses)
                         {
                             if (Items[i].Quality > 0)
                             {
-                                if (Items[i].Name != "Sulfuras, Hand of Ragnaros")
+                                if (Items[i].Name != ProductNames.Sulfuras)
                                 {
                                     Items[i].Quality = Items[i].Quality - 1;
                                 }
