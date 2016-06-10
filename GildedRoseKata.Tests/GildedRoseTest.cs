@@ -12,10 +12,11 @@ namespace GildedRoseKata.Tests
         const int SELLIN_STEP1 = 10;
         const int SELLIN_STEP2 = 5;
         const int POSITIVE_QUALITY = 14;
+        private const string STANDARD_ITEM_NAME = "Standard item";
 
-		[Test()]
+        [Test()]
 		public void StandardItem_DecreaseQuality_At_End_Of_Day() {
-            var item = new Item { Name = "Standard item", SellIn = SELLIN_POSITIVE, Quality = 10 };
+            var item = new Item { Name = STANDARD_ITEM_NAME, SellIn = SELLIN_POSITIVE, Quality = 10 };
 
             IList<Item> Items = new List<Item> { item };
 			GildedRose app = new GildedRose(Items);
@@ -28,7 +29,7 @@ namespace GildedRoseKata.Tests
         [Test()]
         public void StandardItem_SellIn_Decrease()
         {
-            var item = new Item { Name = "Standard item", SellIn = 10, Quality = 10 };
+            var item = new Item { Name = STANDARD_ITEM_NAME, SellIn = 10, Quality = 10 };
 
             IList<Item> Items = new List<Item> { item };
             GildedRose app = new GildedRose(Items);
@@ -41,7 +42,7 @@ namespace GildedRoseKata.Tests
         [Test()]
         public void StandardItem_Expired()
         {
-            var item = new Item { Name = "Standard item", SellIn = 0, Quality = 10 };
+            var item = new Item { Name = STANDARD_ITEM_NAME, SellIn = 0, Quality = 10 };
 
             IList<Item> Items = new List<Item> { item };
             GildedRose app = new GildedRose(Items);
@@ -54,7 +55,7 @@ namespace GildedRoseKata.Tests
         [Test()]
         public void StandardItem_NotNegative()
         {
-            var item = new Item { Name = "Standard item", SellIn = 10, Quality = 0 };
+            var item = new Item { Name = STANDARD_ITEM_NAME, SellIn = 10, Quality = 0 };
 
             IList<Item> Items = new List<Item> { item };
             GildedRose app = new GildedRose(Items);
@@ -67,20 +68,20 @@ namespace GildedRoseKata.Tests
         [Test()]
         public void AgedBrie_IncreaseQuality()
         {
-            var item = new Item { Name = "Aged Brie", SellIn = 10, Quality = 49 };
+            var item = new Item { Name = ProductNames.AgedBrie, SellIn = 10, Quality = 49 };
 
             IList<Item> Items = new List<Item> { item };
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
 
 
-            Assert.AreEqual(50, item.Quality);
+            Assert.AreEqual(GildedRose.MAX_QUALITY, item.Quality);
         }
 
         [Test()]
         public void AgedBrie_Negative_IncreaseQuality()
         {
-            var item = new Item { Name = "Aged Brie", SellIn = -1, Quality = 40 };
+            var item = new Item { Name = ProductNames.AgedBrie, SellIn = -1, Quality = 40 };
 
             IList<Item> Items = new List<Item> { item };
             GildedRose app = new GildedRose(Items);
@@ -94,20 +95,20 @@ namespace GildedRoseKata.Tests
         [Test()]
         public void AgedBrie_IncreaseQuality_Maximum()
         {
-            var item = new Item { Name = "Aged Brie", SellIn = 10, Quality = 50 };
+            var item = new Item { Name = ProductNames.AgedBrie, SellIn = 10, Quality = GildedRose.MAX_QUALITY };
 
             IList<Item> Items = new List<Item> { item };
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
 
 
-            Assert.AreEqual(50, item.Quality);
+            Assert.AreEqual(GildedRose.MAX_QUALITY, item.Quality);
         }
 
         [Test()]
         public void Sulfuras_FixedQuality()
         {
-            var item = new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 10, Quality = 13 };
+            var item = new Item { Name = ProductNames.Sulfuras, SellIn = 10, Quality = 13 };
 
             IList<Item> Items = new List<Item> { item };
             GildedRose app = new GildedRose(Items);
@@ -121,7 +122,7 @@ namespace GildedRoseKata.Tests
         [Test()]
         public void Sulfuras_NotSell()
         {
-            var item = new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = 10, Quality = 13 };
+            var item = new Item { Name = ProductNames.Sulfuras, SellIn = 10, Quality = 13 };
 
             IList<Item> Items = new List<Item> { item };
             GildedRose app = new GildedRose(Items);

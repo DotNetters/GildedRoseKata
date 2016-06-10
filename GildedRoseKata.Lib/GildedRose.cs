@@ -8,6 +8,7 @@ namespace GildedRoseKata.Lib
 {
     public class GildedRose
     {
+        public const int MAX_QUALITY = 50;
         IList<Item> Items;
         public GildedRose(IList<Item> Items)
         {
@@ -30,7 +31,7 @@ namespace GildedRoseKata.Lib
                 }
                 else
                 {
-                    if (Items[i].Quality < 50)
+                    if (Items[i].Quality < MAX_QUALITY)
                     {
                         Items[i].Quality = Items[i].Quality + 1;
 
@@ -83,7 +84,7 @@ namespace GildedRoseKata.Lib
 
         private void IncreaseQuality(int i)
         {
-            if (Items[i].Quality < 50)
+            if (Items[i].Quality < MAX_QUALITY)
             {
                 Items[i].Quality = Items[i].Quality + 1;
             }
