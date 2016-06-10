@@ -78,6 +78,20 @@ namespace GildedRoseKata.Tests
         }
 
         [Test()]
+        public void AgedBrie_Negative_IncreaseQuality()
+        {
+            var item = new Item { Name = "Aged Brie", SellIn = -1, Quality = 40 };
+
+            IList<Item> Items = new List<Item> { item };
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
+
+
+            Assert.AreEqual(41, item.Quality);
+        }
+
+
+        [Test()]
         public void AgedBrie_IncreaseQuality_Maximum()
         {
             var item = new Item { Name = "Aged Brie", SellIn = 10, Quality = 50 };
