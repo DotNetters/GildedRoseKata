@@ -86,8 +86,8 @@ namespace GildedRoseKata.Tests
             GildedRose app = new GildedRose(Items);
             app.UpdateQuality();
 
-
-            Assert.AreEqual(41, item.Quality);
+            Assert.AreEqual(-2, item.SellIn);
+            Assert.AreEqual(42, item.Quality);
         }
 
 
