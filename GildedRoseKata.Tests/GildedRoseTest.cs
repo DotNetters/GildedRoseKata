@@ -11,7 +11,9 @@ namespace GildedRoseKata.Tests
         const int SELLIN_POSITIVE = 10;
         const int SELLIN_STEP1 = 10;
         const int SELLIN_STEP2 = 5;
+        const int SELLIN_JUST_EXPIRED = 0;
         const int POSITIVE_QUALITY = 14;
+        const int STANDARD_DECREASE_QUALITY = 1;
 
 		[Test()]
 		public void StandardItem_DecreaseQuality_At_End_Of_Day() {
@@ -63,6 +65,59 @@ namespace GildedRoseKata.Tests
 
             Assert.AreEqual(0, item.Quality);
         }
+
+        [Test()]
+        public void Conjured_DecreaseQuality_At_End_Of_Day()
+        {
+            var item = new Item { Name = GildedRoseProducts.Congured, SellIn = SELLIN_POSITIVE, Quality = POSITIVE_QUALITY };
+
+            IList<Item> Items = new List<Item> { item };
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
+
+
+            Assert.AreEqual(POSITIVE_QUALITY - STANDARD_DECREASE_QUALITY * 2, item.Quality);
+        }
+
+        [Test()]
+        public void Conjured_SellIn_Decrease()
+        {
+            var item = new Item { Name = GildedRoseProducts.Congured, SellIn = SELLIN_POSITIVE, Quality = POSITIVE_QUALITY };
+
+            IList<Item> Items = new List<Item> { item };
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
+
+
+            Assert.AreEqual(POSITIVE_QUALITY - STANDARD_DECREASE_QUALITY * 2, item.SellIn);
+        }
+
+        [Test()]
+        public void Conjured_Expired()
+        {
+            var item = new Item { Name = GildedRoseProducts.Congured, SellIn = SELLIN_JUST_EXPIRED, Quality = POSITIVE_QUALITY };
+
+            IList<Item> Items = new List<Item> { item };
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
+
+
+            Assert.AreEqual(POSITIVE_QUALITY - STANDARD_DECREASE_QUALITY - 2 * 2, item.Quality);
+        }
+
+        [Test()]
+        public void Conjured_NotNegative()
+        {
+            var item = new Item { Name = GildedRoseProducts.Congured, SellIn = SELLIN_POSITIVE, Quality = 0 };
+
+            IList<Item> Items = new List<Item> { item };
+            GildedRose app = new GildedRose(Items);
+            app.UpdateQuality();
+
+
+            Assert.AreEqual(0, item.Quality);
+        }
+
 
         [Test()]
         public void AgedBrie_IncreaseQuality()
