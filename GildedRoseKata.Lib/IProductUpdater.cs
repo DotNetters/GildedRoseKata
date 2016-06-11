@@ -8,7 +8,7 @@ namespace GildedRoseKata.Lib
 {
     public interface IProductUpdater
     {
-        bool Match(Item item);
+        bool IsMatch(Item item);
 
         bool Update(Item item);
     }

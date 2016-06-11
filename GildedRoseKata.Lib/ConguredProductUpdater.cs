@@ -8,14 +8,14 @@ namespace GildedRoseKata.Lib
 {
     public class ConguredProductUpdater : IProductUpdater
     {
-        public bool Match(Item item)
+        public bool IsMatch(Item item)
         {
             return item != null && item.Name == GildedRoseProducts.Congured;
         }
 
         public bool Update(Item item)
         {
-            if (!Match(item))
+            if (!IsMatch(item))
             {
                 return false;
             }
