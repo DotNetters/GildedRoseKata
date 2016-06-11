@@ -10,6 +10,7 @@ namespace GildedRoseKata.Lib
     {
         IList<Item> Items;
         IProductUpdater[] SpecialProductUpdaters;
+        IProductUpdater DefaultProductUpdater = new DefaultProductUpdater();
 
         public GildedRose(IList<Item> Items)
         {
@@ -38,6 +39,13 @@ namespace GildedRoseKata.Lib
                 {
                     break;
                 }
+                //TODO: Habilitar DefaultProductUpdater
+                //Para poder habilitar DefaultProductUpdater es necesario implementar los Updaters del resto de productos
+                /*else
+                {
+                    DefaultProductUpdater.Update(item);
+                    break;
+                }*/
 
                 // Legacy code 
                 if (Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
