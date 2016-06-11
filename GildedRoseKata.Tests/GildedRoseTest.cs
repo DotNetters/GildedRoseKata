@@ -89,7 +89,7 @@ namespace GildedRoseKata.Tests
             app.UpdateQuality();
 
 
-            Assert.AreEqual(POSITIVE_QUALITY - STANDARD_DECREASE_QUALITY * 2, item.SellIn);
+            Assert.AreEqual(SELLIN_POSITIVE - 1, item.SellIn);
         }
 
         [Test()]
@@ -102,7 +102,7 @@ namespace GildedRoseKata.Tests
             app.UpdateQuality();
 
 
-            Assert.AreEqual(POSITIVE_QUALITY - STANDARD_DECREASE_QUALITY - 2 * 2, item.Quality);
+            Assert.AreEqual(POSITIVE_QUALITY - STANDARD_DECREASE_QUALITY * 2 * 2, item.Quality);
         }
 
         [Test()]

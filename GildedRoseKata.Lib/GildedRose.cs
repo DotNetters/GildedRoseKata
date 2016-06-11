@@ -9,15 +9,37 @@ namespace GildedRoseKata.Lib
     public class GildedRose
     {
         IList<Item> Items;
+        IProductUpdater[] SpecialProductUpdaters;
+
         public GildedRose(IList<Item> Items)
         {
             this.Items = Items;
+
+            SpecialProductUpdaters = new[] { new ConguredProductUpdater() };
         }
 
         public void UpdateQuality()
         {
             for (var i = 0; i < Items.Count; i++)
             {
+                var item = Items[i];
+                bool itemUpdated = false;
+
+                foreach (var updater in SpecialProductUpdaters)
+                {
+                    itemUpdated = updater.Update(item);
+                    if (itemUpdated)
+                    {
+                        break;
+                    }
+                }
+
+                if (itemUpdated)
+                {
+                    break;
+                }
+
+                // Legacy code 
                 if (Items[i].Name != "Aged Brie" && Items[i].Name != "Backstage passes to a TAFKAL80ETC concert")
                 {
                     if (Items[i].Quality > 0)
