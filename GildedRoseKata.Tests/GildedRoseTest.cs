@@ -78,7 +78,7 @@ namespace GildedRoseKata.Tests
         }
 
         [Test()]
-        public void AgedBrie_Negative_IncreaseQuality()
+        public void AgedBrie_IncreaseQuality_Expired()
         {
             var item = new Item { Name = "Aged Brie", SellIn = -1, Quality = 40 };
 
@@ -87,7 +87,7 @@ namespace GildedRoseKata.Tests
             app.UpdateQuality();
 
 
-            Assert.AreEqual(41, item.Quality);
+            Assert.AreEqual(42, item.Quality);
         }
 
 
